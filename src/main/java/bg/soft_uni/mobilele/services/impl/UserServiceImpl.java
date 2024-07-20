@@ -2,6 +2,7 @@ package bg.soft_uni.mobilele.services.impl;
 
 import bg.soft_uni.mobilele.models.dtos.RegisterSeedDto;
 import bg.soft_uni.mobilele.models.entities.Role;
+import bg.soft_uni.mobilele.models.entities.RolesName;
 import bg.soft_uni.mobilele.models.entities.User;
 import bg.soft_uni.mobilele.repositories.RoleRepository;
 import bg.soft_uni.mobilele.repositories.UserRepository;
@@ -36,10 +37,10 @@ public class UserServiceImpl implements UserService {
         String encode = passwordEncoder.encode(map.getPassword());
         map.setPassword(encode);
         if(random.nextDouble()%5==0){
-            Role role = roleRepository.findByName("Admin");
+            Role role = roleRepository.findByName(RolesName.ADMIN);
             map.setRole(role);
         }else{
-            Role role = roleRepository.findByName("User");
+            Role role = roleRepository.findByName(RolesName.USER);
             map.setRole(role);
         }
         this.userRepository.saveAndFlush(map);

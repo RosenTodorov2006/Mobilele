@@ -20,12 +20,20 @@ public class Model extends BaseEntity{
     private LocalDateTime modified;
     @Column
     @NotNull
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private ModelNames name;
     @Column(name = "start_year")
     private int startYear;
     @ManyToOne
     @JoinColumn(name = "brand_id", referencedColumnName = "id")
     private Brand brand;
+    public Model(ModelNames name){
+        this.setName(name);
+    }
+
+    public Model() {
+
+    }
 
     public int getCategory() {
         return category;
@@ -67,11 +75,11 @@ public class Model extends BaseEntity{
         this.modified = modified;
     }
 
-    public String getName() {
+    public ModelNames getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(ModelNames name) {
         this.name = name;
     }
 

@@ -1,9 +1,16 @@
 package bg.soft_uni.mobilele.models.dtos;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.*;
 
 public class AddOfferDto {
-    @NotNull private String model;
+    private String modelName;
+    @Column
+    @NotNull
+    private long user;
+    @Column
+    @NotNull
+    private long model;
     @Min(100)
     private int price;
     @NotNull
@@ -20,11 +27,19 @@ public class AddOfferDto {
     @NotBlank
     private String url;
 
-    public String getModel() {
+    public long getUser() {
+        return user;
+    }
+
+    public void setUser(long user) {
+        this.user = user;
+    }
+
+    public long getModel() {
         return model;
     }
 
-    public void setModel(String model) {
+    public void setModel(long model) {
         this.model = model;
     }
 
@@ -82,5 +97,13 @@ public class AddOfferDto {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getModelName() {
+        return modelName;
+    }
+
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
     }
 }

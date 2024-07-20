@@ -3,10 +3,10 @@ package bg.soft_uni.mobilele.models.dtos;
 import java.time.LocalDateTime;
 
 public class OfferExportDto {
-    private int id;
+    private long offerId;
     private int year;
     private int price;
-    private String model;
+    private long model;
     private int mileage;
     private String engine;
     private String transmission;
@@ -22,11 +22,11 @@ public class OfferExportDto {
         this.year = year;
     }
 
-    public String getModel() {
+    public long getModel() {
         return model;
     }
 
-    public void setModel(String model) {
+    public void setModel(long model) {
         this.model = model;
     }
 
@@ -70,14 +70,6 @@ public class OfferExportDto {
         this.price = price;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public LocalDateTime getCreated() {
         return created;
     }
@@ -92,5 +84,13 @@ public class OfferExportDto {
 
     public void setModified(LocalDateTime modified) {
         this.modified = modified;
+    }
+
+    public long getOfferId() {
+        return offerId;
+    }
+
+    public void setOfferId(long offerId) {
+        this.offerId = offerId;
     }
 }

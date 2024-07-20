@@ -31,12 +31,13 @@
     <h2 class="text-center text-white">Upload Offer</h2>
     <form th:method="POST"
           th:object="${addOfferDto}"
+          th:action="@{/offers/add}"
           class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
         <div class="row">
 
             <div class="form-group col-md-6 mb-3">
                 <label class="text-center text-white font-weight-bold" th:for="model">Model</label>
-                <select th:field="*{model}" th:errorclass="is-invalid" class="form-control">
+                <select th:field="*{modelName}" th:errorclass="is-invalid" class="form-control">
                     <option th:value="BMW" th:text="BMW"></option>
                     <option th:value="AUDI" th:text="AUDI"></option>
                     <option th:value="MERCEDES" th:text="MERCEDES"></option>
@@ -123,7 +124,7 @@
         <div class="row">
             <div class="col col-md-4">
                 <div class="button-holder d-flex">
-                    <input type="submit" class="btn btn-info btn-lg" value="Submit Offer"/>
+                    <button type="submit" class="btn btn-info btn-lg">Submit Offer</button>
                 </div>
             </div>
         </div>

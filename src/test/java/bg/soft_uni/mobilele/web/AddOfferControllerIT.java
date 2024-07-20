@@ -1,15 +1,12 @@
 package bg.soft_uni.mobilele.web;
 
 import bg.soft_uni.mobilele.models.entities.Model;
-import bg.soft_uni.mobilele.models.entities.Offer;
+import bg.soft_uni.mobilele.models.entities.ModelNames;
 import bg.soft_uni.mobilele.repositories.ModelRepository;
-import bg.soft_uni.mobilele.repositories.OfferRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -53,7 +50,7 @@ public class AddOfferControllerIT {
     @WithMockUser(username = "name", roles = "ADMIN")
     public void addOfferTest() throws Exception {
         Model model = new Model();
-        model.setName("BMW");
+        model.setName(ModelNames.BMW);
 
         modelRepository.save(model);
         mockMvc.perform(MockMvcRequestBuilders.post("/offers/add")
@@ -86,7 +83,7 @@ public class AddOfferControllerIT {
     @WithMockUser(username = "name", roles = "ADMIN")
     public void addOfferAndThrowExcTest() throws Exception {
         Model model = new Model();
-        model.setName("BMW");
+        model.setName(ModelNames.BMW);
 
         modelRepository.save(model);
         mockMvc.perform(MockMvcRequestBuilders.post("/offers/add")
@@ -114,7 +111,7 @@ public class AddOfferControllerIT {
     @WithMockUser(username = "name", roles = "ADMIN")
     public void viewOffersWithIdTest() throws Exception {
         Model model = new Model();
-        model.setName("BMW");
+        model.setName(ModelNames.BMW);
         modelRepository.save(model);
 
         Offer offer = new Offer();

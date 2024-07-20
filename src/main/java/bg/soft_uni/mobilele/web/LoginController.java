@@ -3,6 +3,7 @@ package bg.soft_uni.mobilele.web;
 import bg.soft_uni.mobilele.models.dtos.RegisterSeedDto;
 import bg.soft_uni.mobilele.models.dtos.LoginDto;
 import bg.soft_uni.mobilele.services.UserService;
+import bg.soft_uni.mobilele.web.aop.WarnIfExecutionExceeds;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,9 @@ public class LoginController {
         this.userService = userService;
 
     }
-
+    @WarnIfExecutionExceeds(
+            threshold = 2000
+    )
     @GetMapping("/users/register")
     public String register(Model model){
         if(!model.containsAttribute("registerSeedDto")){
